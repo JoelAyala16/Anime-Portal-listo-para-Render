@@ -1,16 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
-// Configuración para Vite
 export default defineConfig({
   plugins: [react()],
-  root: '.', // raíz donde está index.html
+  root: '.', // 👈 aquí está tu index.html (en frontend/)
   build: {
-    outDir: 'dist', // carpeta de salida
-    emptyOutDir: true, // limpia la carpeta antes de cada build
+    outDir: 'dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: resolve(__dirname, 'index.html'), // asegura que Vite use el index.html correcto
+    },
   },
   server: {
-    port: 3000, // puerto local de desarrollo
+    port: 3000,
   },
 })
-

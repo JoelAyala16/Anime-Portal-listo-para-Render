@@ -1,14 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// Configuración para Vite
 export default defineConfig({
   plugins: [react()],
-  root: '.', // indica que el index.html está en /frontend/public
+  root: 'public',   // 👈 ahora apunta a public
   build: {
-    outDir: 'dist', // salida del build
+    outDir: '../dist', // salida a la raíz del frontend
   },
   server: {
-    port: 3000, // para desarrollo local
+    port: 3000,
   },
 })
